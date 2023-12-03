@@ -35,6 +35,9 @@ jobs:
     - name: Install dependencies
       run: apt -y update
 
+    - name: Install nav2-msgs
+      run: apt -y install ros-${{ matrix.rosdistro }}-nav2-msgs*
+
     - name: Install behaviortree-cpp-v3
       run: apt -y install ros-${{ matrix.rosdistro }}-behaviortree-cpp-v3
 
