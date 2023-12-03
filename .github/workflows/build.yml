@@ -1,4 +1,4 @@
-name: Build ROS2 tests
+name: Build ROS2
 
 on:
   push:
@@ -12,7 +12,7 @@ on:
     types: [published]
 
 jobs:
-  build_pkg:
+  build_ros2:
     strategy:
       matrix:
         rosdistro: [ humble ]
@@ -32,8 +32,11 @@ jobs:
       with:
         path: src/tb3_behavior_tree
 
-    - name: Install dependencies
-      run: rosdep update --include-eol-distros && apt-get update && rosdep install --from-path . -i -y --rosdistro ${{ matrix.rosdistro }}
+    # - name: Install dependencies
+    #   run: rosdep update --include-eol-distros && apt-get update && rosdep install --from-path . -i -y --rosdistro ${{ matrix.rosdistro }}
+
+    - name: Install diagnostic-updater
+      run: apt-get install ros-${{ matrix.rosdistro }}-diagnostic-updater
 
     - name: Build tests
       id: build_test
@@ -48,9 +51,10 @@ jobs:
       if: steps.build_test.outcome == 'failure'
       run: echo "result - failure" && exit 1
 
+
   check_status:
-    needs: build_pkg
-    if: ${{ needs.build_pkg.outcome != 'success' }}
+    needs: build_ros2
+    if: ${{ needs.build_ros2.outcome != 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: Set Workflow Status to Failure
