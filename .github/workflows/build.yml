@@ -32,8 +32,11 @@ jobs:
       with:
         path: src/tb3_behavior_tree
 
-    # - name: Install dependencies
-    #   run: rosdep update --include-eol-distros && apt-get update && rosdep install --from-path . -i -y --rosdistro ${{ matrix.rosdistro }}
+    - name: Install dependencies
+      run: apt-get update
+
+    - name: Install behaviortree-cpp*
+      run: apt-get install ros-${{ matrix.rosdistro }}-behaviortree-cpp*
 
     - name: Build tests
       id: build_test
