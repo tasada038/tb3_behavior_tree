@@ -2,7 +2,7 @@
 
 This is the ROS 2 package to control Turtlebot3 with Behavior Tree.
 
-[![Build ROS2](https://github.com/tasada038/tb3_behavior_tree/actions/workflows/build.yml/badge.svg)](https://github.com/tasada038/tb3_behavior_tree/actions/workflows/build.yml)
+![Build ROS2](https://github.com/tasada038/tb3_behavior_tree/actions/workflows/build.yml/badge.svg))
 
 ## Supported ROS 2 distributions
 
