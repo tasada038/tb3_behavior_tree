@@ -56,12 +56,3 @@ jobs:
     - name: build_test command failure
       if: steps.build_test.outcome == 'failure'
       run: echo "result - failure" && exit 1
-
-
-  check_status:
-    needs: build_ros2
-    if: ${{ needs.build_ros2.outcome != 'success' }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set Workflow Status to Failure
-        run: exit 1
