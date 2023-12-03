@@ -35,8 +35,8 @@ jobs:
     - name: Install dependencies
       run: apt-get update
 
-    - name: Install behaviortree-cpp*
-      run: apt-get install ros-${{ matrix.rosdistro }}-behaviortree-cpp*
+    - name: Install behaviortree-cpp-v3
+      run: apt-get install ros-${{ matrix.rosdistro }}-behaviortree-cpp-v3
 
     - name: Build tests
       id: build_test
