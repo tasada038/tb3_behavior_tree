@@ -35,6 +35,9 @@ jobs:
     - name: Install dependencies
       run: apt -y update
 
+    - name: Install cv-bridge
+      run: apt -y install ros-${{ matrix.rosdistro }}-cv-bridge
+
     - name: Install nav2-msgs
       run: apt -y install ros-${{ matrix.rosdistro }}-nav2-msgs*
 
