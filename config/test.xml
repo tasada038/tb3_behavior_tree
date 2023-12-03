@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<root main_tree_to_execute="BehaviorTree">
+    <!-- ////////// -->
+    <BehaviorTree ID="BehaviorTree">
+        <Parallel failure_threshold="0" success_threshold="3">
+            <Action ID="MoveRobot" sleep_mtime="100"/>
+            <Fallback>
+                <Action ID="CameraDetected"/>
+                <Action ID="ReadingLaser"/>
+                <Inverter>
+                    <Action ID="Rotating" input="20" sleep_mtime="100"/>
+                </Inverter>
+            </Fallback>
+            <Action ID="Stop" name="stop"/>
+        </Parallel>
+    </BehaviorTree>
+</root>
